@@ -147,14 +147,15 @@
     font-size: 16px;
     font-weight: 800;
     color: #004385;
-    transition: all;
-    transition-duration: 400ms;
+    transition: all 400ms;
     box-shadow: 0px 5px 10px #80808028;
 }
 
 #login-loginBtn:hover {
     background-color: #abddf0;
 }
+
+
 
 #login-registerLink {
     display: inline-block;
@@ -239,11 +240,14 @@
     right: auto;
     font-size: 20px;
 }
+
 #register-title button {
     border: none;
     font-size: 20px;
-    
+    display: inline-block;
+    width: 30px;
 }
+
 #register-title button:hover {
     color: #66AEC9;
 }
@@ -265,9 +269,11 @@
     font-weight: 900;
     transition: all 400ms;
 }
+
 #register-sendCode:hover {
     background-color: #abddf0;
 }
+
 #register-email,
 #register-password,
 #register-code {
@@ -288,9 +294,11 @@
     outline: none;
     padding: 0px 20px;
 }
+
 #register-code {
     top: 140px;
 }
+
 #register-password {
     top: 195px;
 }
@@ -334,7 +342,8 @@
 #reset-title button {
     border: none;
     font-size: 20px;
-
+    display: inline-block;
+    width: 30px;
 }
 
 #reset-title button:hover {

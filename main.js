@@ -69,8 +69,6 @@ var mainWindow;
 
 // 初始化app配置
 var properties = JSON.parse(fs.readFileSync(path.join(__dirname, 'properties.json'), { encoding: 'utf-8' }));
-console.log(properties);
-
 // 初始化内存键值存储
 const runtimeKVDataBase = new Map();
 // 初始化配置文件存储器
@@ -101,8 +99,6 @@ app.whenReady().then(() => {
         loginWindow.close();
         createMainWindow();
     });
-
-
 
     createLoginWindow();
 });

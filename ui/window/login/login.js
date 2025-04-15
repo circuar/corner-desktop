@@ -6,18 +6,17 @@ const { SourceTextModule } = require("vm");
 
 var server;
 var port;
+var baseUrl;
 
 // 加载上次的username到输入框
 
 
 // 登录请求发送锁，防止重复提交
 var loginRequestSendMutex = false;
+var registerCodeSendMutex = false;
 
 init();
 pageFadeSwitch('', 'login-rightContent');
-
-
-
 
 
 // 函数定义 ====================================================================
@@ -26,6 +25,7 @@ async function init() {
     let properties = await ipcRenderer.invoke('getProperties');
     server = properties.remote.server;
     port = properties.remote.port;
+    baseUrl = server + ':' + port;
 
     let lastUsername = await ipcRenderer.invoke('getConfig', 'lastLoginUsernameInput');
     if (lastUsername) {
@@ -41,8 +41,10 @@ function closeCurrentWindow() {
 
 function login() {
 
+
     if (loginRequestSendMutex)
         return;
+
 
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
@@ -74,7 +76,7 @@ function login() {
     // 设置请求超时时间
     xhr.timeout = 5000;
     xhr.setRequestHeader('content-type', 'application/json');
-    xhr.onreadystatechange = () => {
+    xhr.onload = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const response = JSON.parse(xhr.responseText);
             if (response.status && response.success) {
@@ -91,16 +93,50 @@ function login() {
         notice('请求失败，status code: ' + xhr.status, 3000);
     };
 
+    xhr.onerror = (e) => {
+        notice('请求失败', 3000);
+    }
+
+
+    xhr.ontimeout = (e) => {
+        notice('请求超时', 3000);
+    }
+
+
+
     // 设置请求后函数解锁
     xhr.onloadend = () => {
         loginRequestSendMutex = false;
     };
-
+    // 禁用此函数
+    loginRequestSendMutex = true;
     // 发送请求
     xhr.send(JSON.stringify(request));
-    // 请求发送后，禁用此函数
-    loginRequestSendMutex = true;
+
 }
+
+function registerSendCode() {
+    let email = document.getElementById('register-email').value;
+    if (!email) {
+        notice('请输入邮箱', 3000);
+        return;
+    }
+    // 发送请求
+    const xhr = new XMLHttpRequest();
+    xhr.open(baseUrl + '/api/user/register/verification')
+    xhr.setTimeout(5000);
+    xhr.setRequestHeader('content-type', 'application/json');
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // 服务器已接收请求
+            let
+        }
+    }
+
+}
+
+
 
 
 function notice(message, duration) {
