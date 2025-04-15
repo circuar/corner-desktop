@@ -1,0 +1,365 @@
+.topBar {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    /* 通知下层 */
+    z-index: 998;
+    height: 40px;
+    background-color: transparent;
+}
+
+.drag-region {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    background-color: transparent;
+    -webkit-app-region: drag;
+}
+
+.close-btn {
+    display: inline-block;
+    margin: 10px;
+    line-height: 20px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #929292;
+    height: 20px;
+    width: 20px;
+    transition: all 400ms ease-in-out;
+    z-index: 1000;
+}
+
+.close-btn:hover {
+    background-color: rgb(255, 226, 129);
+    color: #331900;
+}
+
+#login-backImg {
+    width: 600px;
+    height: 350px;
+    display: block;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+#rightBox {
+    display: block;
+    position: fixed;
+    width: 300px;
+    height: 350px;
+    z-index: 1;
+    left: 300px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+
+#login-title {
+    color: #004385;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: fixed;
+    top: 30px;
+    left: auto;
+    right: auto;
+    font-size: 20px;
+}
+
+#login-usernameTitleBox {
+    background-color: #66AEC9;
+    position: fixed;
+    width: 80px;
+    height: 40px;
+    z-index: 2;
+    left: 35px;
+    top: 80px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 14px;
+}
+
+#login-passwordTitleBox {
+    background-color: #66AEC9;
+    position: fixed;
+    width: 80px;
+    height: 40px;
+    z-index: 2;
+    left: 35px;
+    top: 155px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 14px;
+}
+
+#login-usernameTitle,
+#login-passwordTitle {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    line-height: 20px;
+}
+
+#login-username,
+#login-password {
+    height: 40px;
+    width: 190px;
+    display: block;
+    position: fixed;
+    left: 35px;
+    top: 100px;
+    border-radius: 20px;
+    border: 0px solid #ffffff00;
+    background: linear-gradient(to right, #abddf0 35%, #ffffff 100%);
+    z-index: 3;
+    box-shadow: 0px 5px 10px #80808028;
+    text-align: center;
+    font-size: 14px;
+    color: #004385;
+    outline: none;
+    padding: 0px 20px;
+}
+
+#login-password {
+    top: 175px;
+}
+
+#login-loginBtn {
+    display: block;
+    position: fixed;
+    top: 245px;
+    left: 35px;
+    width: 230px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #73BCFB;
+    font-size: 16px;
+    font-weight: 800;
+    color: #004385;
+    transition: all;
+    transition-duration: 400ms;
+    box-shadow: 0px 5px 10px #80808028;
+}
+
+#login-loginBtn:hover {
+    background: #abddf0;
+}
+
+#login-registerLink {
+    display: inline-block;
+    position: fixed;
+    left: 55px;
+    top: 290px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+#login-resetPasswd {
+    display: inline-block;
+    position: fixed;
+    right: 55px;
+    top: 290px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.login-notification {
+    z-index: 999;
+    display: block;
+    position: fixed;
+    background-color: #ffbb0069;
+    font-size: 16px;
+    font-weight: 800;
+    color: #331b00;
+    padding: 3px 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: fit-content;
+    height: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 10px auto;
+    transition: all;
+    transition-duration: 400ms;
+    animation: slideIn 0.4s forwards;
+}
+
+.login-notification:hover {
+    background-color: #ffd9ab;
+}
+
+@keyframes slideIn {
+    from {
+        top: -60px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        top: -60px;
+    }
+}
+
+/* register ================================= */
+
+
+#register-title {
+    color: #004385;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: fixed;
+    top: 30px;
+    left: auto;
+    right: auto;
+    font-size: 20px;
+}
+
+#register-emailTitleBox {
+    background-color: #66AEC9;
+    position: fixed;
+    width: 80px;
+    height: 40px;
+    z-index: 2;
+    left: 36px;
+    top: 80px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 14px;
+}
+
+#register-passwordTitleBox {
+    background-color: #66AEC9;
+    position: fixed;
+    width: 80px;
+    height: 40px;
+    z-index: 2;
+    left: 35px;
+    top: 155px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 14px;
+}
+
+#register-emailTitle,
+#register-passwordTitle {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    line-height: 20px;
+}
+
+#register-email,
+#register-password {
+    height: 40px;
+    width: 190px;
+    display: block;
+    position: fixed;
+    left: 35px;
+    top: 100px;
+    border-radius: 20px;
+    border: 0px solid #ffffff00;
+    background: linear-gradient(to right, #abddf0 35%, #ffffff 100%);
+    z-index: 3;
+    box-shadow: 0px 5px 10px #80808028;
+    text-align: center;
+    font-size: 14px;
+    color: #004385;
+    outline: none;
+    padding: 0px 20px;
+}
+
+#register-password {
+    top: 175px;
+}
+
+#register-registerBtn {
+    display: block;
+    position: fixed;
+    top: 255px;
+    left: 35px;
+    width: 230px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #73BCFB;
+    font-size: 16px;
+    font-weight: 800;
+    color: #004385;
+    transition: all;
+    transition-duration: 400ms;
+    box-shadow: 0px 5px 10px #80808028;
+}
+
+#register-registerBtn:hover {
+    background: #abddf0;
+}
+
+.register-notification {
+    z-index: 999;
+    display: block;
+    position: fixed;
+    background-color: #ffbb0069;
+    font-size: 16px;
+    font-weight: 800;
+    color: #331b00;
+    padding: 3px 20px;
+    border-radius: 20px;
+    max-width: 200px;
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 10px auto;
+    transition: all;
+    transition-duration: 400ms;
+    animation: slideIn 0.4s forwards;
+}
+
+.register-notification:hover {
+    background-color: #ffd9ab;
+}
+
+@keyframes slideIn {
+    from {
+        top: -60px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        top: -60px;
+    }
+}

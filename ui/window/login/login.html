@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login & Register</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <script src="../common.js"></script>
+    <script src="login.js"></script>
+</head>
+
+<body>
+    <div class="topBar">
+        <div class="drag-region"></div>
+        <button class="close-btn" onclick="closeLoginWindow()"></button>
+    </div>
+
+
+
+    <img id="login-backImg" src="../../resources/img/loginbackground.png" />
+    <div id="rightBox">
+        <!-- 登录 -->
+        <div id="login-rightContent">
+            <h1 id="login-title"> 登 录</h1>
+            <div id="login-usernameTitleBox">
+                <h2 id="login-usernameTitle">username</h2>
+            </div>
+            <input id="login-username" type="text" placeholder="请输入UID或邮箱" />
+            <div id="login-passwordTitleBox">
+                <h2 id="login-passwordTitle">password</h2>
+            </div>
+            <input id="login-password" type="password" placeholder="请输入密码" />
+            <button id="login-loginBtn" onclick="login()">登 录</button>
+            <a id="login-registerLink" onclick="pageSwitch('login-rightContent', 'register-rightContent')"
+                href="#">注册账号</a>
+            <a id="login-resetPasswd" onclick="pageReset()" href="#">重置密码</a>
+        </div>
+        <!-- 注册 -->
+        <div id="register-rightContent" style="visibility: hidden;">
+            <h1 id="register-title"> 注册账号</h1>
+            <div id="register-emailTitleBox">
+                <h2 id="register-emailTitle">email</h2>
+            </div>
+            <input id="register-email" type="text" placeholder="请输入邮箱" />
+            <div id="register-passwordTitleBox">
+                <h2 id="register-passwordTitle">password</h2>
+            </div>
+            <input id="register-password" type="text" placeholder="请输入密码" />
+            <button id="register-registerBtn" onclick="register()">注 册</button>
+        </div>
+    </div>
+
+        
+
+    <div id="reset-rightBox" style="visibility: hidden;">
+        <h1 id="reset-title"> 重置密码</h1>
+        <div id="login-usernameTitleBox">
+            <h2 id="login-usernameTitle">email</h2>
+        </div>
+        <input id="login-username" type="text" placeholder="请输入注册时使用的邮箱" />
+        <div id="login-passwordTitleBox">
+            <h2 id="login-passwordTitle">code</h2>
+        </div>
+        <input id="login-password" type="text" placeholder="请输入验证码" />
+        <button id="login-loginBtn" onclick="sendEmail()">发 送</button>
+    </div>
+    <div id="reset-passwd" style="visibility: hidden;">
+        <h1 id="reset-title">请输入新的密码</h1>
+        <div id="login-usernameTitleBox">
+            <h2 id="login-usernameTitle">password</h2>
+        </div>
+        <input id="login-username" type="text" placeholder="请输入新的密码" />
+        <button id="login-loginBtn" onclick="reset()">重 置</button>
+    </div>
+</body>
+
+</html>
