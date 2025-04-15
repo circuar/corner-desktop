@@ -1,34 +1,111 @@
-const { ipcRender } = require('electron');
+const { animate } = require("animejs");
+const { ipcRenderer } = require("electron");
+var CryptoJS = require("crypto-js");
+const { SourceTextModule } = require("vm");
 
-function closeLoginWindow() {
-    
+
+var server;
+var port;
+
+// 加载上次的username到输入框
+
+
+// 登录请求发送锁，防止重复提交
+var loginRequestSendMutex = false;
+
+init();
+pageFadeSwitch('', 'login-rightContent');
+
+
+
+
+
+// 函数定义 ====================================================================
+async function init() {
+    // 加载properties
+    let properties = await ipcRenderer.invoke('getProperties');
+    server = properties.remote.server;
+    port = properties.remote.port;
+
+    let lastUsername = await ipcRenderer.invoke('getConfig', 'lastLoginUsernameInput');
+    if (lastUsername) {
+        console.log("loaded last username box input text:" + lastUsername);
+        document.getElementById('login-username').value = lastUsername;
+    }
+}
+
+function closeCurrentWindow() {
+    ipcRenderer.invoke('closeCurrentWindow');
 }
 
 
-
-
-
-
-
 function login() {
-    const username = document.getElementById("login-username").value;
-    const password = document.getElementById("login-password").value;
 
-    if (null == username || "" == username) {
-        notice("请输入用户名", 3000);
+    if (loginRequestSendMutex)
+        return;
+
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    if (null == username || '' == username) {
+        notice('请输入用户名', 3000);
         return
     }
 
-    if (null == password || "" == password) {
-        notice("请输入密码", 3000);
+    if (null == password || '' == password) {
+        notice('请输入密码', 3000);
         return
     }
+
+    // 缓存用户名
+    ipcRenderer.invoke('setConfig', 'lastLoginUsernameInput', username)
+
+    const encryptPassword = CryptoJS.SHA256(password).toString();
+
+    const request = {
+        username: username,
+        password: encryptPassword
+    }
+
+    // 初始化请求器
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', server + ':' + port + '/api/user/login', true);
+    // 设置请求超时时间
+    xhr.timeout = 5000;
+    xhr.setRequestHeader('content-type', 'application/json');
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.status && response.success) {
+                ipcRenderer.invoke('saveDataToRuntimeDB', 'token', response.data.token);
+                notice('登录成功~', 1000);
+                setTimeout(() => {
+                    loginSuccess();
+                }, 1400);
+                return;
+            } else {
+                notice(response.message, 3000);
+            }
+        }
+        notice('请求失败，status code: ' + xhr.status, 3000);
+    };
+
+    // 设置请求后函数解锁
+    xhr.onloadend = () => {
+        loginRequestSendMutex = false;
+    };
+
+    // 发送请求
+    xhr.send(JSON.stringify(request));
+    // 请求发送后，禁用此函数
+    loginRequestSendMutex = true;
 }
 
 
 function notice(message, duration) {
-    const notification = document.createElement("div");
-    notification.classList.add("login-notification");
+    const notification = document.createElement('div');
+    notification.classList.add('login-notification');
     notification.innerHTML = message;
 
     notification.addEventListener('click', () => {
@@ -38,7 +115,6 @@ function notice(message, duration) {
     document.body.appendChild(notification);
 
     setTimeout(() => { notificationClose(notification) }, duration);
-
 }
 
 
@@ -50,13 +126,40 @@ function notificationClose(notification) {
 }
 
 
-
-function pageSwitch(from, to) {
-    
+function loginSuccess() {
+    ipcRenderer.invoke('loginWindowProcess');
 }
 
+function pageFadeSwitch(from, to, duration) {
+    let fromDiv = document.getElementById(from);
+    let toDiv = document.getElementById(to);
+    // 设置初始状态
 
+    if (toDiv) {
+        toDiv.style.opacity = 0;
+    }
 
-function pageRegister() {
-    document.getElementById("login-username")
+    setTimeout(() => {
+        if (fromDiv) {
+            fromDiv.style.visibility = 'hidden';
+        }
+        if (toDiv) {
+            toDiv.style.visibility = 'visible';
+
+            animate(toDiv, {
+                opacity: 1,
+                duration: duration
+            })
+
+        }
+
+    }, duration);
+
+    if (fromDiv) {
+        animate(fromDiv, {
+            opacity: 0,
+            duration: duration
+        })
+    }
+
 }

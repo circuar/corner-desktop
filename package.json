@@ -1,5 +1,5 @@
 {
-  "name": "corner",
+  "name": "corner-desktop",
   "version": "0.1.0",
   "description": "A client for a chat network, based on electron",
   "main": "main.js",
@@ -13,6 +13,8 @@
     "electron": "^35.1.5"
   },
   "dependencies": {
-    "animejs": "^4.0.1"
+    "animejs": "^4.0.1",
+    "crypto-js": "^4.2.0",
+    "electron-store": "^10.0.1"
   }
 }

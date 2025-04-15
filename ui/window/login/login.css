@@ -50,14 +50,21 @@
 
 #rightBox {
     display: block;
-    position: fixed;
+    position: relative;
     width: 300px;
     height: 350px;
-    z-index: 1;
     left: 300px;
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 10px;
+}
+
+#login-rightContent,
+#register-rightContent,
+#reset-rightContent {
+    position: fixed;
+    width: 300px;
+    height: 350px;
 }
 
 
@@ -66,16 +73,14 @@
     width: 100%;
     text-align: center;
     display: block;
-    position: fixed;
+    position: absolute;
     top: 30px;
-    left: auto;
-    right: auto;
     font-size: 20px;
 }
 
 #login-usernameTitleBox {
     background-color: #66AEC9;
-    position: fixed;
+    position: absolute;
     width: 80px;
     height: 40px;
     z-index: 2;
@@ -87,7 +92,7 @@
 
 #login-passwordTitleBox {
     background-color: #66AEC9;
-    position: fixed;
+    position: absolute;
     width: 80px;
     height: 40px;
     z-index: 2;
@@ -110,7 +115,7 @@
     height: 40px;
     width: 190px;
     display: block;
-    position: fixed;
+    position: absolute;
     left: 35px;
     top: 100px;
     border-radius: 20px;
@@ -131,14 +136,14 @@
 
 #login-loginBtn {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 245px;
     left: 35px;
     width: 230px;
     height: 40px;
     border-radius: 20px;
     border: none;
-    background: #73BCFB;
+    background-color: #73BCFB;
     font-size: 16px;
     font-weight: 800;
     color: #004385;
@@ -148,12 +153,12 @@
 }
 
 #login-loginBtn:hover {
-    background: #abddf0;
+    background-color: #abddf0;
 }
 
 #login-registerLink {
     display: inline-block;
-    position: fixed;
+    position: absolute;
     left: 55px;
     top: 290px;
     font-size: 12px;
@@ -162,7 +167,7 @@
 
 #login-resetPasswd {
     display: inline-block;
-    position: fixed;
+    position: absolute;
     right: 55px;
     top: 290px;
     font-size: 12px;
@@ -228,53 +233,50 @@
     width: 100%;
     text-align: center;
     display: block;
-    position: fixed;
+    position: absolute;
     top: 30px;
     left: auto;
     right: auto;
     font-size: 20px;
 }
-
-#register-emailTitleBox {
-    background-color: #66AEC9;
-    position: fixed;
-    width: 80px;
-    height: 40px;
-    z-index: 2;
-    left: 36px;
-    top: 80px;
-    border-radius: 10px 10px 0px 0px;
-    font-size: 14px;
+#register-title button {
+    border: none;
+    font-size: 20px;
+    
+}
+#register-title button:hover {
+    color: #66AEC9;
 }
 
-#register-passwordTitleBox {
-    background-color: #66AEC9;
-    position: fixed;
-    width: 80px;
-    height: 40px;
-    z-index: 2;
-    left: 35px;
-    top: 155px;
-    border-radius: 10px 10px 0px 0px;
-    font-size: 14px;
+#register-sendCode {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 85px;
+    border-radius: 40px;
+    border: none;
+    background-color: #73BCFB;
+    top: 90px;
+    z-index: 10;
+    right: 40px;
+    color: #0071e2;
+    font-size: 16px;
+    box-shadow: 0px 3px 6px #2b2b2b1f;
+    font-weight: 900;
+    transition: all 400ms;
 }
-
-#register-emailTitle,
-#register-passwordTitle {
-    font-size: 14px;
-    text-align: center;
-    display: block;
-    line-height: 20px;
+#register-sendCode:hover {
+    background-color: #abddf0;
 }
-
 #register-email,
-#register-password {
+#register-password,
+#register-code {
     height: 40px;
     width: 190px;
     display: block;
-    position: fixed;
+    position: absolute;
     left: 35px;
-    top: 100px;
+    top: 85px;
     border-radius: 20px;
     border: 0px solid #ffffff00;
     background: linear-gradient(to right, #abddf0 35%, #ffffff 100%);
@@ -286,14 +288,16 @@
     outline: none;
     padding: 0px 20px;
 }
-
+#register-code {
+    top: 140px;
+}
 #register-password {
-    top: 175px;
+    top: 195px;
 }
 
 #register-registerBtn {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 255px;
     left: 35px;
     width: 230px;
@@ -313,53 +317,99 @@
     background: #abddf0;
 }
 
-.register-notification {
-    z-index: 999;
+/* 修改密码 ====================================================== */
+
+#reset-title {
+    color: #004385;
+    width: 100%;
+    text-align: center;
     display: block;
-    position: fixed;
-    background-color: #ffbb0069;
+    position: absolute;
+    top: 30px;
+    left: auto;
+    right: auto;
+    font-size: 20px;
+}
+
+#reset-title button {
+    border: none;
+    font-size: 20px;
+
+}
+
+#reset-title button:hover {
+    color: #66AEC9;
+}
+
+#reset-sendCode {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 85px;
+    border-radius: 40px;
+    border: none;
+    background-color: #73BCFB;
+    top: 90px;
+    z-index: 10;
+    right: 40px;
+    color: #0071e2;
+    font-size: 16px;
+    box-shadow: 0px 3px 6px #2b2b2b1f;
+    font-weight: 900;
+    transition: all 400ms;
+}
+
+#reset-sendCode:hover {
+    background-color: #abddf0;
+}
+
+#reset-email,
+#reset-password,
+#reset-code {
+    height: 40px;
+    width: 190px;
+    display: block;
+    position: absolute;
+    left: 35px;
+    top: 85px;
+    border-radius: 20px;
+    border: 0px solid #ffffff00;
+    background: linear-gradient(to right, #abddf0 35%, #ffffff 100%);
+    z-index: 3;
+    box-shadow: 0px 5px 10px #80808028;
+    text-align: center;
+    font-size: 14px;
+    color: #004385;
+    outline: none;
+    padding: 0px 20px;
+}
+
+#reset-code {
+    top: 140px;
+}
+
+#reset-password {
+    top: 195px;
+}
+
+#reset-resetBtn {
+    display: block;
+    position: absolute;
+    top: 255px;
+    left: 35px;
+    width: 230px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #73BCFB;
     font-size: 16px;
     font-weight: 800;
-    color: #331b00;
-    padding: 3px 20px;
-    border-radius: 20px;
-    max-width: 200px;
-    width: 200px;
-    height: 20px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: 10px auto;
+    color: #004385;
     transition: all;
     transition-duration: 400ms;
-    animation: slideIn 0.4s forwards;
+    box-shadow: 0px 5px 10px #80808028;
 }
 
-.register-notification:hover {
-    background-color: #ffd9ab;
-}
-
-@keyframes slideIn {
-    from {
-        top: -60px;
-        opacity: 0;
-    }
-
-    to {
-        top: 0;
-        opacity: 1;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-        top: -60px;
-    }
+#reset-resetBtn:hover {
+    background: #abddf0;
 }
