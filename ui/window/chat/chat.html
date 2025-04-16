@@ -21,10 +21,10 @@
 
     <div id="windowController">
         <button id="minimizeWindow"><img src="../../resources/img/minibtn.svg"></button>
-        <button id="closeWindow"><img src="../../resources/img/closebtn.svg"></button>
+        <button id="closeWindow" onclick="closeCurrentWindow()"><img src="../../resources/img/closebtn.svg"></button>
     </div>
 
-    <div id="loadingBox" style="display: none;">
+    <div id="windowLoadingBox" style="display: none;">
         <div id="centerBox">
             <div id="loadingBlock"></div>
             <span>数据加载中...</span>
@@ -72,8 +72,6 @@
                         <span id="main-chatSearchLabel"></span>
                         <input id="main-chatSearch" placeholder="搜索" </div>
                     </div>
-
-                    <div id="main-chatAddBox">+</div>
                 </div>
                 <!-- 搜索结果 -->
                 <div id="chatListSearchResult" style="display: none;">
@@ -95,8 +93,8 @@
                 <div id="main-chatRollingGroup">
 
                     <div id="main-chatListPinned">
-                        <div class="labelTitle">󰐃 置顶会话</div>
-                        <div class="chatItem">
+                        <div id="pinnedLabel" class="labelTitle">󰐃 置顶会话</div>
+                        <!-- <div class="chatItem">
                             <div class="identifier" style="display: none;"></div>
 
                             <div class="chatListUserImgFallback">
@@ -117,16 +115,16 @@
                             <div class="chatItemWidget">
                                 <div class="time">00:00 AM</div>
                                 <div class="count">60</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
                     <div id="main-chatListChat">
-                        <div class="labelTitle">󰎟 消息</div>
+                        <div id="commonLabel" class="labelTitle">󰎟 消息</div>
                         <!-- add item here -->
                     </div>
                     <div id="main-chatListMute">
-                        <div class="labelTitle">󱏧 免打扰</div>
+                        <div id="muteLabel" class="labelTitle">󱏧 免打扰</div>
                         <!-- add item here -->
                     </div>
                 </div>
@@ -136,9 +134,13 @@
 
                 <div id="fr-listTitle">Connect</div>
 
-                <div id="fr-frSearchBox">
-                    <span id="fr-frSearchLabel"></span>
-                    <input id="fr-frSearch" placeholder="搜索" </div>
+                <div id="fr-topSearchGroup">
+                    <div id="fr-frSearchBox">
+                        <span id="fr-frSearchLabel"></span>
+                        <input id="fr-frSearch" placeholder="搜索" </div>
+                    </div>
+
+                    <div id="fr-frAddBox">+</div>
                 </div>
 
 
@@ -412,6 +414,7 @@
 
 
     </div>
+    <script src="chat.js"></script>
 
 </body>
 

@@ -74,6 +74,9 @@ var properties = JSON.parse(fs.readFileSync(path.join(__dirname, 'properties.jso
 const runtimeKVDataBase = new Map();
 // 初始化配置文件存储器
 const configStore = new Store();
+// 初始化会话索引缓存
+const sessionIndexCache = new Store({ name: 'sessionIndexCache' });
+
 // 应用启动时加载登录窗口
 app.whenReady().then(() => {
 
@@ -93,6 +96,12 @@ app.whenReady().then(() => {
     ipcMain.handle('setConfig', async (event, key, value) => configStore.set(key, value));
     ipcMain.handle('getConfig', async (event, key) => configStore.get(key));
     ipcMain.handle('deleteConfig', async (event, key) => configStore.delete(key));
+
+    ipcMain.handle('getConfigObject', async event => configStore);
+
+    // 会话索引数组
+    ipcMain.handle('getSessionIndexArray', async event => sessionIndexCache.get('sessionIndexArray', new Array(0)));
+    ipcMain.handle('setSessionIndexArray', async (event, sessionArray) => sessionIndexCache.set('sessionIndexArray', sessionArray));
 
     // properties传输
     ipcMain.handle('getProperties', async event => properties);

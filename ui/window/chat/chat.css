@@ -1,17 +1,27 @@
+body {
+    margin: 0px;
+    border: none;
+    outline: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+
+
 #main-background {
     width: 1150px;
     height: 750px;
-    position: fixed;
+    position: absolute;
     display: block;
     background-color: #ffffff;
     border-radius: 20px;
-    border: 1px solid #c1c1c185;
+    /* border: 1px solid #c1c1c185; */
     z-index: 0;
     overflow: hidden;
 }
 
 #main-backgroundBlock1 {
-    position: fixed;
+    position: absolute;
     display: block;
     width: 700px;
     height: 700px;
@@ -22,7 +32,7 @@
 }
 
 #main-backgroundBlock2 {
-    position: fixed;
+    position: absolute;
     display: block;
     width: 500px;
     height: 500px;
@@ -37,9 +47,7 @@
 #main-backgroundFilter {
     width: 100%;
     height: 100%;
-    /* display: block; */
     background-color: #bde7e97e;
-    border-radius: 20px;
     border: none;
     backdrop-filter: blur(50px);
     z-index: 10;
@@ -89,7 +97,7 @@
     -webkit-app-region: drag;
 }
 
-#loadingBox {
+#windowLoadingBox {
     position: fixed;
     left: 0px;
     right: 0px;
@@ -101,7 +109,7 @@
     border-radius: 20px;
 }
 
-#loadingBox>#centerBox {
+#windowLoadingBox>#centerBox {
     position: absolute;
     width: 200px;
     height: 50px;
@@ -133,7 +141,7 @@
     }
 }
 
-#loadingBox>#centerBox>span {
+#windowLoadingBox>#centerBox>span {
     display: inline-block;
     position: absolute;
     height: 20px;
@@ -283,7 +291,7 @@
 }
 
 #main-chatSearchBox {
-    width: 210px;
+    width: 100%;
     background-color: #ffffffbf;
     border-radius: 36px;
     height: 36px;
@@ -309,26 +317,6 @@
     border: 0px;
     outline-style: none;
 }
-
-#main-chatAddBox {
-    background-color: #66AEC9;
-    display: inline-block;
-    margin: 0px 0px 0px auto;
-    width: 36px;
-    height: 36px;
-    border-radius: 36px;
-    font-size: 24px;
-    font-weight: 500;
-    text-align: center;
-    line-height: 36px;
-    color: #ffffff;
-    transition: all 0.3s cubic-bezier(0.36, 0.73, 0.4, 2);
-}
-
-#main-chatAddBox:hover {
-    transform: scale(1.1);
-}
-
 
 #chatListSearchResult {
     background-color: #ffffff7a;
@@ -401,7 +389,6 @@
 #main-chatRollingGroup {
     width: 100%;
     height: 608px;
-    /* background-color: #00b7ff; */
     overflow-y: scroll;
 }
 
@@ -440,7 +427,6 @@
     display: flex;
     align-items: center;
 }
-
 
 .identifier {
     width: 6px;
@@ -1259,13 +1245,19 @@
 }
 
 
-#fr-frSearchBox {
+fr-topSearchGroup {
+    display: flex;
     width: 100%;
+    height: 36px;
+    margin: 0px 0px 20px 0px;
+}
+
+#fr-frSearchBox {
+    width: 210px;
     background-color: #ffffffbf;
     border-radius: 36px;
     height: 36px;
     display: flex;
-    margin: 0px 0px 20px 0px;
 }
 
 #fr-frSearchLabel {
@@ -1286,6 +1278,25 @@
     flex: 1;
     border: 0px;
     outline-style: none;
+}
+
+#fr-frAddBox {
+    background-color: #66AEC9;
+    display: inline-block;
+    margin: 0px 0px 0px auto;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 36px;
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.36, 0.73, 0.4, 2);
+}
+
+#fr-frAddBox:hover {
+    transform: scale(1.1);
 }
 
 #fr-frRollingGroup {

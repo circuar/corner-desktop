@@ -1,6 +1,6 @@
-const { animate, createTimer } = require("animejs");
-const { ipcRenderer } = require("electron");
-var CryptoJS = require("crypto-js");
+const { animate, createTimer } = require('animejs');
+const { ipcRenderer } = require('electron');
+var CryptoJS = require('crypto-js');
 
 var server;
 var port;
@@ -14,7 +14,6 @@ var registerCodeSendMutex = false;
 var registerRequestSendMutex = false;
 
 init();
-pageFadeSwitch('', 'login-rightContent');
 
 
 // 函数定义 ====================================================================
@@ -31,6 +30,8 @@ async function init() {
         console.log("loaded last username box input text:" + lastUsername);
         document.getElementById('login-username').value = lastUsername;
     }
+    pageFadeSwitch('', 'login-rightContent');
+
 }
 
 function closeCurrentWindow() {
