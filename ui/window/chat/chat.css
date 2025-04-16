@@ -7,7 +7,7 @@
     border-radius: 20px;
     border: 1px solid #c1c1c185;
     z-index: 0;
-
+    overflow: hidden;
 }
 
 #main-backgroundBlock1 {
@@ -45,7 +45,107 @@
     z-index: 10;
 }
 
-#main-sideBox {
+#windowController {
+    position: fixed;
+    z-index: 900;
+    background-color: #ffffff;
+    right: 5px;
+    top: 5px;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+}
+
+#minimizeWindow,
+#closeWindow {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    margin: 5px 5px 5px 5px;
+}
+
+#closeWindow>img,
+#minimizeWindow>img {
+    width: 20px;
+    height: 20px;
+    mask-image: linear-gradient(#ffffff7e);
+}
+
+#minimizeWindow:hover,
+#closeWindow:hover {
+    background-color: #eeeeee;
+
+}
+
+.drag-region {
+    position: fixed;
+    /* background-color: #000000; */
+    height: 25px;
+    width: 1080px;
+    z-index: 850;
+    -webkit-app-region: drag;
+}
+
+#loadingBox {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff69;
+    z-index: 500;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+
+#loadingBox>#centerBox {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    background-color: #ffffffbb;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #0000002d;
+    top: 350px;
+    left: 475px;
+}
+
+#loadingBlock {
+    background: linear-gradient(to top right, #00b7ff, #00ff62);
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    animation: loading 2s cubic-bezier(0.67, 0.26, 0.38, 0.73) infinite forwards;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loadingBox>#centerBox>span {
+    display: inline-block;
+    position: absolute;
+    height: 20px;
+    line-height: 20px;
+    top: 15px;
+    left: 55px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #004167;
+}
+
+#main-sideBar {
     background-color: rgba(253, 255, 252, 0.65);
     display: block;
     position: fixed;
@@ -59,17 +159,18 @@
     z-index: 12;
 }
 
-#main-sideBoxUserImgFallback {
-    width: 46px;
-    height: 46px;
+#main-sideBarUserImgFallback {
+    width: 40px;
+    height: 40px;
     border-radius: 100px;
     display: block;
-    margin: 10px 7px 0px 7px;
+    margin: 12px 10px 0px 10px;
     z-index: 12;
     background-color: rgb(160, 160, 160);
 }
 
-#main-sideBoxUserImg {
+/* 用户头像 */
+#main-sideBarUserImg {
     width: 100%;
     height: 100%;
     border-radius: 100px;
@@ -77,35 +178,64 @@
     margin: 0px;
 }
 
-#main-iconChat {
-    display: block;
-    width: 60px;
-    text-align: center;
-    margin: 70px 0px 0px 0px;
 
+#sidebarIndicator {
+    position: absolute;
+    width: 6px;
+    height: 14px;
+    margin: 3px 5px;
+    background-color: #5d9996;
+    top: 120px;
+    left: 0px;
+    border-radius: 6px;
 }
 
-
+#main-iconChat,
 #main-iconFriends,
 #main-iconCommunity,
-#main-iconData {
+#main-iconData,
+#main-iconSettings {
     display: block;
+    position: absolute;
     width: 60px;
+    height: 20px;
     text-align: center;
-    margin: 40px 0px 0px 0px;
+    margin: 0px;
+    mask-image: linear-gradient(#ffffffcc);
+    transition: all 0.3s cubic-bezier(0.36, 0.73, 0.4, 2);
+}
+
+#main-iconChat {
+    top: 120px;
+}
+
+#main-iconFriends {
+    top: 180px;
+}
+
+#main-iconCommunity {
+    top: 240px;
+}
+
+#main-iconData {
+    top: 300px;
 }
 
 #main-iconSettings {
-    display: block;
-    width: 60px;
-    text-align: center;
-    margin: 290px 0px 0px 0px;
+    bottom: 20px;
 }
 
+#main-iconChat:hover,
+#main-iconFriends:hover,
+#main-iconCommunity:hover,
+#main-iconData:hover,
+#main-iconSettings:hover {
+    transform: scale(1.2);
+}
 
 #main-sideBarIcon {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 #main-listBox {
@@ -192,6 +322,80 @@
     text-align: center;
     line-height: 36px;
     color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.36, 0.73, 0.4, 2);
+}
+
+#main-chatAddBox:hover {
+    transform: scale(1.1);
+}
+
+
+#chatListSearchResult {
+    background-color: #ffffff7a;
+    width: 254px;
+    height: 150px;
+    border-radius: 10px;
+    margin: -10px 0px 10px 0px;
+    box-shadow: 0px 0px 5px #49494917;
+    padding: 5px;
+}
+
+.chatListSearchResultRollingGroup {
+    width: 254px;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.chatListSearchResultRollingGroup::-webkit-scrollbar {
+    display: none;
+}
+
+.chatListSearchItem {
+    /* background-color: #000316; */
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    transition: all 1000ms;
+}
+
+.chatListSearchItem:hover {
+    background-color: #ffffff75;
+    transition: all 300ms;
+}
+
+.chatListSearchItemImgFallback {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 100%;
+    flex-shrink: 0;
+}
+
+.chatListSearchItemImgFallback>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.chatListSearchItemText {
+    /* background-color: #00b7ff; */
+    width: 100%;
+    height: 100%;
+}
+
+.chatListSearchItemText>span {
+    display: inline-block;
+    /* background-color: #00ff62; */
+    line-height: 40px;
+    height: 40px;
+    width: 200px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #004167;
+    mask-image: linear-gradient(to right, #1f1f1f 70%, transparent 100%);
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #main-chatRollingGroup {
@@ -234,8 +438,9 @@
     width: 100%;
     height: 64px;
     display: flex;
-    align-items: center
+    align-items: center;
 }
+
 
 .identifier {
     width: 6px;
@@ -255,9 +460,10 @@
     flex-shrink: 0;
 }
 
+
 .chatListUserImgFallback img {
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     border-radius: 48px;
 }
 
@@ -305,8 +511,6 @@
     overflow: hidden;
     vertical-align: middle;
     mask-image: linear-gradient(to right, #1f1f1f 70%, transparent 100%);
-
-
 }
 
 .extraText {
@@ -1407,39 +1611,4 @@
     display: inline-block;
     height: 20px;
     line-height: 20px;
-}
-
-#windowController {
-    position: fixed;
-    z-index: 900;
-    background-color: #ffffff;
-    right: 5px;
-    top: 5px;
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    display: flex;
-}
-
-#minimizeWindow,
-#closeWindow {
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    border: none;
-    border-radius: 30px;
-    margin: 5px 5px 5px 5px;
-}
-
-#closeWindow>img,
-#minimizeWindow>img {
-    width: 20px;
-    height: 20px;
-    mask-image: linear-gradient(#ffffff7e);
-}
-
-#minimizeWindow:hover,
-#closeWindow:hover {
-    background-color: #eeeeee;
-
 }

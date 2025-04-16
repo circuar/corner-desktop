@@ -57,8 +57,9 @@ function createMainWindow() {
 
     mainWindow = new BrowserWindow(windowProperties);
 
-    window.loadFile('ui/window/chat/chat.html');
+    mainWindow.loadFile('ui/window/chat/chat.html');
 }
+
 
 // 启动逻辑 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

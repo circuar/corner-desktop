@@ -4,44 +4,57 @@
 <head>
     <title>Main</title>
     <link rel="stylesheet" type="text/css" href="../style.css" />
-    <link rel="stylesheet" type="text/css" href="window.css" />
+    <link rel="stylesheet" type="text/css" href="chat.css" />
 </head>
 
 <body>
+    <!-- 窗口背景层 -->
     <div id="main-background">
         <div id="main-backgroundBlock1"></div>
         <div id="main-backgroundBlock2"></div>
         <div id="main-backgroundFilter"></div>
     </div>
 
+    <!-- 窗口控制 -->
 
+    <div class="drag-region"></div>
 
     <div id="windowController">
         <button id="minimizeWindow"><img src="../../resources/img/minibtn.svg"></button>
         <button id="closeWindow"><img src="../../resources/img/closebtn.svg"></button>
     </div>
 
-    <div id="main-sideBox">
-
-        <!-- 用户头像 -->
-        <div id="main-sideBoxUserImgFallback">
-            <img id="main-sideBoxUserImg" src="user.png" onerror="this.style.display='none';" />
+    <div id="loadingBox" style="display: none;">
+        <div id="centerBox">
+            <div id="loadingBlock"></div>
+            <span>数据加载中...</span>
         </div>
+    </div>
+
+
+    <!-- 侧边栏 -->
+    <div id="main-sideBar">
+        <!-- 用户头像 -->
+        <div id="main-sideBarUserImgFallback">
+            <img id="main-sideBarUserImg" src="user.png" onerror="this.style.display='none';" />
+        </div>
+
+        <div id="sidebarIndicator"></div>
 
         <div id="main-iconChat">
-            <img id="main-sideBarIcon" src="/resources/img/chat.svg" />
+            <img id="main-sideBarIcon" src="../../resources/img/chat.svg" />
         </div>
         <div id="main-iconFriends">
-            <img id="main-sideBarIcon" src="/resources/img/firend.svg" />
+            <img id="main-sideBarIcon" src="../../resources/img/firend.svg" />
         </div>
         <div id="main-iconCommunity">
-            <img id="main-sideBarIcon" src="/resources/img/community.svg" />
+            <img id="main-sideBarIcon" src="../../resources/img/community.svg" />
         </div>
         <div id="main-iconData">
-            <img id="main-sideBarIcon" src="/resources/img/data.svg" />
+            <img id="main-sideBarIcon" src="../../resources/img/data.svg" />
         </div>
         <div id="main-iconSettings">
-            <img id="main-sideBarIcon" src="/resources/img/settings.svg" />
+            <img id="main-sideBarIcon" src="../../resources/img/settings.svg" />
         </div>
     </div>
 
@@ -62,14 +75,29 @@
 
                     <div id="main-chatAddBox">+</div>
                 </div>
+                <!-- 搜索结果 -->
+                <div id="chatListSearchResult" style="display: none;">
+                    <!-- 搜索结果滚动组 -->
+                    <div class="chatListSearchResultRollingGroup">
+                        <!-- 搜索结果条目 -->
+                        <div class="chatListSearchItem">
+                            <div class="chatListSearchItemImgFallback">
+                                <img src="../../resources/img/userhead.jpg" />
+                            </div>
+                            <div class="chatListSearchItemText">
+                                <span>搜索结果哈哈哈哈asdasdasdasd哈</span>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+                <!-- 滚动组 -->
                 <div id="main-chatRollingGroup">
 
                     <div id="main-chatListPinned">
                         <div class="labelTitle">󰐃 置顶会话</div>
                         <div class="chatItem">
-                            <div class="identifier"></div>
-
+                            <div class="identifier" style="display: none;"></div>
 
                             <div class="chatListUserImgFallback">
                                 <img src="../../resources/img/userhead.jpg" />
@@ -95,259 +123,11 @@
 
                     <div id="main-chatListChat">
                         <div class="labelTitle">󰎟 消息</div>
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
-
-                        <div class="chatItem">
-                            <div class="identifier" style="display: none;"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
+                        <!-- add item here -->
                     </div>
                     <div id="main-chatListMute">
                         <div class="labelTitle">󱏧 免打扰</div>
-                        <div class="chatItem">
-                            <div class="identifier"></div>
-                            <div class="chatListUserImgFallback">
-                                <img src="../../resources/img/userhead.jpg" />
-                            </div>
-                            <div class="chatItemText">
-                                <div class="topGroup">
-                                    <span class="userFlag">SUDO</span>
-                                    <span class="userShowName">刘熠ddddddd</span>
-                                    <span class="extraText">󰫢 </span>
-                                </div>
-                                <div class="messageText">
-                                    刘熠：【表情】
-                                </div>
-                            </div>
-                            <div class="chatItemWidget">
-                                <div class="time">00:00 AM</div>
-                                <div class="count">60</div>
-                            </div>
-                        </div>
+                        <!-- add item here -->
                     </div>
                 </div>
             </div>
