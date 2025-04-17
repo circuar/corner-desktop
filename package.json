@@ -5,15 +5,18 @@
   "main": "main.js",
   "scripts": {
     "test": "test",
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild:better-sqlite3": "electron-rebuild -f -w better-sqlite3"
   },
   "author": "circuar",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^35.1.5"
+    "electron": "^35.1.5",
+    "electron-rebuild": "^3.2.9"
   },
   "dependencies": {
     "animejs": "^4.0.1",
+    "better-sqlite3": "^11.9.1",
     "crypto-js": "^4.2.0",
     "electron-store": "^10.0.1"
   }
